@@ -38,7 +38,7 @@ resource "aws_iam_role" "wireguard_role" {
   count       = 1
 }
 
-resource "aws_iam_role_policy_attachment" "wireguard_roleattach_eip" {
+resource "aws_iam_role_policy_attachment" "wireguard_roleattach" {
   role       = aws_iam_role.wireguard_role[0].name
   policy_arn = aws_iam_policy.wireguard_policy[0].arn
   #count      = (var.eip_id != "disabled" ? 1 : 0) # only used for EIP mode
