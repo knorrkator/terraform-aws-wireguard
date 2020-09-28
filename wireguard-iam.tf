@@ -45,6 +45,12 @@ resource "aws_iam_role_policy_attachment" "wireguard_roleattach" {
   count       = 1
 }
 
+resource "aws_iam_role_policy_attachment" "wireguard_roleattach" {
+  role       = aws_iam_role.wireguard_role[0].name
+  policy_arn = "arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore"
+  count      = 1
+}
+
 resource "aws_iam_instance_profile" "wireguard_profile" {
   name  = "tf-wireguard-${var.env}"
   role  = aws_iam_role.wireguard_role[0].name
